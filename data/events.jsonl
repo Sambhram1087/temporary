@@ -1,0 +1,12 @@
+{"v": 1, "type": "evt", "id": 1, "state": "ACTIVE", "t": 63445, "rms": 0.169, "buffered": false, "rx": 1793738929.435, "sim": false}
+{"v": 1, "type": "evt", "id": 1, "state": "ACKNOWLEDGED", "t": 79030, "rms": 0.189, "buffered": false, "rx": 1793738945.018, "sim": false}
+{"v": 1, "type": "evt", "id": 1, "state": "RESOLVED", "t": 104725, "rms": 0.013, "buffered": false, "rx": 1793738970.712, "sim": false}
+{"v": 1, "type": "evt", "id": 2, "state": "ACTIVE", "t": 112175, "rms": 0.464, "buffered": false, "rx": 1793738978.164, "sim": false}
+{"v": 1, "type": "evt", "id": 2, "state": "ACKNOWLEDGED", "t": 116325, "rms": 0.06, "buffered": false, "rx": 1793738982.312, "sim": false}
+{"v": 1, "type": "evt", "id": 2, "state": "RESOLVED", "t": 123925, "rms": 0.017, "buffered": false, "rx": 1793738989.914, "sim": false}
+{"v": 1, "type": "evt", "id": 3, "state": "ACTIVE", "t": 540709, "rms": 0.127, "buffered": true, "rx": 1793739448.884, "sim": false}
+{"v": 1, "type": "evt", "id": 3, "state": "RESOLVED", "t": 618028, "rms": 0.023, "buffered": false, "rx": 1793739483.993, "sim": false}
+{"v": 1, "type": "evt", "id": 4, "state": "ACTIVE", "t": 625248, "rms": 0.118, "buffered": false, "rx": 1793739491.213, "sim": false}
+{"v": 1, "type": "evt", "id": 4, "state": "RESOLVED", "t": 674759, "rms": 0.027, "buffered": false, "rx": 1793739540.72, "sim": false}
+{"v": 1, "type": "evt", "id": 5, "state": "ACTIVE", "t": 692539, "rms": 0.104, "buffered": false, "rx": 1793739558.499, "sim": false}
+{"v": 1, "type": "evt", "id": 5, "state": "RESOLVED", "t": 708889, "rms": 0.007, "buffered": false, "rx": 1793739574.849, "sim": false}
