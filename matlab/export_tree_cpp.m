@@ -7,7 +7,7 @@ fprintf(fid, "inline int predict_tree(const float* x) {\n");
 emit(1, 1);
 fprintf(fid, "}\n");  fclose(fid);
     function emit(node, ind)
-        pad = repmat("  ", 1, ind);
+        pad = blanks(2*ind);
         if mdl.IsBranchNode(node)
             idx = find(strcmp(mdl.PredictorNames, mdl.CutPredictor{node}));
             fprintf(fid, "%sif (x[%d] < %.7gf) {\n", pad, idx-1, mdl.CutPoint(node));

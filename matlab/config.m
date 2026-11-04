@@ -12,6 +12,7 @@ cfg.features   = ["domfreq","bp_4_6","bp_3_12","bp_low","rms_acc","p2p_acc","rms
 root           = fileparts(fileparts(mfilename('fullpath')));
 cfg.rawDir     = fullfile(root,"data","raw");
 cfg.procDir    = fullfile(root,"data","processed");
+cfg.labelFile  = fullfile(cfg.rawDir,"labels.csv");   % columns: session,label (e.g. session_20261104_022139)
 cfg.modelDir   = fullfile(root,"models");
 cfg.firmwareDir= fullfile(root,"firmware_snippets");
 end

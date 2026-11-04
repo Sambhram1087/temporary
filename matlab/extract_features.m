@@ -6,6 +6,8 @@ gm = vecnorm(S.gyr,2,2);  gm = gm - mean(gm);
 [bb,aa] = butter(4, cfg.band/(fs/2), "bandpass");
 ya = filtfilt(bb,aa,am);  yg = filtfilt(bb,aa,gm);
 N = round(cfg.winSec*fs);  H = round(cfg.hopSec*fs);
+if numel(ya) < N, error("%s: shorter than the %g s window", S.session, cfg.winSec); end
+assert(N <= cfg.nfft, "Window (%d samples) > nfft (%d): periodogram would wrap. Raise cfg.nfft.", N, cfg.nfft);
 bp = @(P,f,b) sum(P(f>=b(1) & f<=b(2))) * (f(2)-f(1));
 rows = [];  tt = [];
 for i = 1:H:numel(ya)-N+1

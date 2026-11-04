@@ -4,14 +4,18 @@ function th = derive_thresholds(posLabel)
 if nargin < 1, posLabel = "tremor"; end
 cfg = config();
 F = readtable(fullfile(cfg.procDir, "features_matlab.csv"));
+F = F(string(F.label) ~= "unlabelled", :);
+if isempty(F), error("No labelled windows. Run set_labels(), then process_all(). (labels file: %s, exists: %d)", cfg.labelFile, isfile(cfg.labelFile)); end
 pos = string(F.label) == posLabel;
+if ~any(pos) || all(pos), error("Need windows labelled '%s' and windows with another label (found: %s).", posLabel, strjoin(unique(string(F.label)), ", ")); end
 fprintf("positive windows: %d, negative: %d\n", sum(pos), sum(~pos));
 best = struct("auc",-inf);
 for f = cfg.features
     [x,y,thr,auc] = perfcurve(pos, F.(f), true);
-    [~,i] = max(y - x);                              % Youden J
-    fprintf("%-10s AUC=%.3f  Youden threshold=%.4g\n", f, auc, thr(i));
-    if auc > best.auc, best = struct("feature",f,"auc",auc,"thr",thr(i)); end
+    ok = isfinite(thr);  xs = x(ok);  ys = y(ok);  ts = thr(ok);
+    [~,i] = max(ys - xs);                            % Youden J
+    fprintf("%-10s AUC=%.3f  Youden threshold=%.4g\n", f, auc, ts(i));
+    if auc > best.auc, best = struct("feature",f,"auc",auc,"thr",ts(i)); end
 end
 % index levels: 0 below T1; levels 1-4 split by quartiles of the primary feature among windows above T1
 v = F.(best.feature)(pos & F.(best.feature) >= best.thr);
