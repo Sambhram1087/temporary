@@ -1,0 +1,12 @@
+{
+  "accuracy": 0.74045801526717558,
+  "precision": 0.33333333333333331,
+  "recall": 0.33333333333333331,
+  "f1": 1,
+  "sessions": 4,
+  "classes": [
+    "rest",
+    "tremor",
+    "voluntary"
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "feature": "rms_gyr",
+  "T1": 49.7401764947456,
+  "levels": [
+    49.7401764947456,
+    62.152408329654619,
+    70.0180049192787,
+    75.611282445419576
+  ],
+  "auc": 1,
+  "version": "v1-20261104",
+  "note": "Prototype movement index. Not a clinical scale."
+}

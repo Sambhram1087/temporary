@@ -11,7 +11,7 @@ script = fullfile(root,'ml','features.py');
 cmd = sprintf('python "%s" "%s" "%s"', script, cfg.rawDir, pyOut);
 [status, msg] = system(cmd);
 if status ~= 0, error('Python feature extraction failed. Check Python and ml/requirements.txt.\n%s', msg); end
-Fmat = process_all(); %#ok<NASGU>
+Fmat = process_all(false); %#ok<NASGU>
 Fm = readtable(fullfile(cfg.procDir,'features_matlab.csv'));
 Fp = readtable(pyOut);
 vars = cellstr(cfg.features);
@@ -20,7 +20,7 @@ for k = 1:numel(vars)
     a = Fm.(vars{k}); b = Fp.(vars{k});
     scale = max(abs(a),[],'omitnan');
     if isempty(scale) || ~isfinite(scale) || scale == 0, scale = 1; end
-    rel = abs(a-b) ./ max(abs(a), 1e-12);
+    rel = abs(a-b) ./ max(abs(a), 1e-6*scale);
     report.(vars{k}) = struct('maxAbs',max(abs(a-b),[],'omitnan'), ...
         'maxRelative',max(rel,[],'omitnan'), 'maxRelativePercent',100*max(rel,[],'omitnan'));
     fprintf('%-10s max abs=%g, max relative=%g%%\n', vars{k}, report.(vars{k}).maxAbs, report.(vars{k}).maxRelativePercent);

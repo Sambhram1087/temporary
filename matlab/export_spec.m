@@ -33,7 +33,7 @@ spec.source = 'MATLAB fitctree'; spec.fs = 100; spec.band = cfg.band;
 spec.win = cfg.winSec; spec.hop = cfg.hopSec; spec.warm = 0;
 spec.nfft = cfg.nfft; spec.sos = sos; spec.features = expected;
 spec.le = false; % MATLAB branch rule is x < cut.
-spec.tree = struct('feat',feat,'cut',cut,'left',left,'right',right,'cls',cellstr(cls));
+spec.tree = struct('feat',feat,'cut',cut,'left',left,'right',right,'cls',{cellstr(cls)});
 json = jsonencode(spec,'PrettyPrint',true);
 fid = fopen(outFile,'w'); if fid < 0, error('Cannot write %s',outFile); end
 cleanup = onCleanup(@() fclose(fid)); fwrite(fid,json,'char');
